@@ -1,0 +1,20 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+ 
+echo " Running pre-commit checks..."
+echo ""
+ 
+# Run lint-staged (Prettier + ESLint)
+echo " Checking Prettier and ESLint..."
+npx lint-staged
+ 
+echo " Prettier/ESLint checks passed!"
+echo ""
+ 
+# Run tests
+echo " Running tests..."
+npm run test:ci
+ 
+echo " Tests passed!"
+echo ""
+echo " All pre-commit checks passed! Ready to commit."
