@@ -1,31 +1,48 @@
 name: CI/CD Pipeline
  
 on:
+
   push:
+
     branches: [main, develop]
+
   pull_request:
+
     branches: [main, develop]
  
 jobs:
+
   code-quality:
+
     name: Code Quality Checks
+
     runs-on: ubuntu-latest
+
     strategy:
+
       matrix:
+
         node-version: [18.x]
+
     steps:
+
       - uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
+
         with:
-          node-version: '20'
 
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
+          node-version: ${{ matrix.node-version }}
 
-      - name: run tests
+          cache: 'npm'
+
+      - run: npm install --legacy-peer-deps
+
       - run: npm run format:check
+
       - run: npm run lint
+
       - run: npm run test:ci
+
       - run: npm run build
+ 
