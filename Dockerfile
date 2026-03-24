@@ -1,6 +1,6 @@
 FROM node:20-alpine AS builder
 
-WORKDIR /kohli_angel_ui_garden
+WORKDIR /kohli_angel_ui_garden_build_checks
 
 COPY package*.json ./
 
@@ -14,7 +14,7 @@ RUN npm run build-storybook
  
 FROM nginx:alpine
 
-COPY --from=builder /kohli_angel_ui_garden/storybook-static /usr/share/nginx/html
+COPY --from=builder /kohli_angel_ui_garden_build_checks/storybook-static /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
