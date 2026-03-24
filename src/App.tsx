@@ -1,8 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import './index.tsx';
-import './index.ts';
 
 function App() {
   return (
