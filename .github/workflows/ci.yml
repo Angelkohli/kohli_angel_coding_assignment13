@@ -62,9 +62,7 @@ jobs:
         with:
           context: .
           push: false
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/kohli-angel-coding-assignment13:latest
-            ${{ secrets.DOCKER_USERNAME }}/kohli-angel-coding-assignment13:${{ github.sha }}
+          tags: kohli-angel-coding-assignment13:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -78,8 +76,8 @@ jobs:
       - name: Check build status
         run: |
           if [ "${{ needs.code-quality.result }}" == "failure" ]; then
-            echo " Build failed! Code quality checks did not pass."
+            echo "Build failed! Code quality checks did not pass."
             exit 1
           else
-            echo " Build successful! All code quality checks passed."
+            echo "Build successful! All code quality checks passed."
           fi
