@@ -41,7 +41,7 @@ const BasicTable = (args: any) => (
     </TableBody>
     <TableFooter>
       <TableRow>
-        <TableCell >Total Records: 3</TableCell>
+        <TableCell>Total Records: 3</TableCell>
       </TableRow>
     </TableFooter>
   </Table>

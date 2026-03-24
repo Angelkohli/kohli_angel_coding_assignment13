@@ -29,7 +29,7 @@ describe('Dropdown Component', () => {
 
   test('renders all options', () => {
     render(<Dropdown options={mockOptions} />);
-    mockOptions.forEach(option => {
+    mockOptions.forEach((option) => {
       const optionElement = screen.getByText(option.label);
       expect(optionElement).toBeInTheDocument();
     });
@@ -38,10 +38,10 @@ describe('Dropdown Component', () => {
   test('handles change event', () => {
     const handleChange = jest.fn();
     render(<Dropdown options={mockOptions} onChange={handleChange} />);
-    
+
     const dropdown = screen.getByTestId('dropdown');
     fireEvent.change(dropdown, { target: { value: 'option1' } });
-    
+
     expect(handleChange).toHaveBeenCalledWith('option1');
   });
 

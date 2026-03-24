@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 import { TextProps } from './Text.types';
 
-const StyledText = styled.p<{ 
-  disabled?: boolean; 
+const StyledText = styled.p<{
+  disabled?: boolean;
   color?: string;
   fontSize?: string;
   fontWeight?: string;
   textAlign?: 'left' | 'center' | 'right';
   variant?: 'body' | 'subtitle' | 'caption';
 }>`
-  color: ${props => {
+  color: ${(props) => {
     if (props.disabled) return '#cccccc';
     if (props.color) return props.color;
     return '#333333';
   }};
-  
-  font-size: ${props => {
+
+  font-size: ${(props) => {
     if (props.fontSize) return props.fontSize;
     switch (props.variant) {
       case 'subtitle':
@@ -26,19 +26,19 @@ const StyledText = styled.p<{
         return '1rem';
     }
   }};
-  
-  font-weight: ${props => props.fontWeight || '400'};
-  text-align: ${props => props.textAlign || 'left'};
-  opacity: ${props => (props.disabled ? 0.6 : 1)};
+
+  font-weight: ${(props) => props.fontWeight || '400'};
+  text-align: ${(props) => props.textAlign || 'left'};
+  opacity: ${(props) => (props.disabled ? 0.6 : 1)};
   margin: 8px 0;
   line-height: 1.5;
   transition: all 0.3s ease;
 
   @media (max-width: 768px) {
-    font-size: ${props => {
+    font-size: ${(props) => {
       if (props.fontSize) {
         const numSize = parseFloat(props.fontSize);
-        return (numSize * 0.9) + 'rem';
+        return numSize * 0.9 + 'rem';
       }
       switch (props.variant) {
         case 'subtitle':
@@ -52,16 +52,16 @@ const StyledText = styled.p<{
   }
 `;
 
-export const Text: React.FC<TextProps> = ({ 
-  content, 
-  disabled = false, 
+export const Text: React.FC<TextProps> = ({
+  content,
+  disabled = false,
   color,
   fontSize,
   fontWeight,
   textAlign = 'left',
-  variant = 'body'
+  variant = 'body',
 }) => (
-  <StyledText 
+  <StyledText
     disabled={disabled}
     color={color}
     fontSize={fontSize}

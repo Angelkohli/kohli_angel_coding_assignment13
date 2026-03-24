@@ -13,11 +13,11 @@ const DropdownSelect = styled.select<{ disabled?: boolean }>`
   padding: 10px 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: ${props => (props.disabled ? '#f5f5f5' : '#ffffff')};
-  color: ${props => (props.disabled ? '#cccccc' : '#333333')};
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+  background-color: ${(props) => (props.disabled ? '#f5f5f5' : '#ffffff')};
+  color: ${(props) => (props.disabled ? '#cccccc' : '#333333')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   font-size: 1rem;
-  opacity: ${props => (props.disabled ? 0.6 : 1)};
+  opacity: ${(props) => (props.disabled ? 0.6 : 1)};
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
@@ -39,16 +39,16 @@ const DropdownSelect = styled.select<{ disabled?: boolean }>`
 
 const DropdownOption = styled.option<{ disabled?: boolean }>`
   background-color: white;
-  color: ${props => (props.disabled ? '#cccccc' : '#333333')};
+  color: ${(props) => (props.disabled ? '#cccccc' : '#333333')};
   padding: 8px;
 `;
 
-export const Dropdown: React.FC<DropdownProps> = ({ 
-  options, 
+export const Dropdown: React.FC<DropdownProps> = ({
+  options,
   value,
   onChange,
   disabled = false,
-  placeholder = 'Select an option'
+  placeholder = 'Select an option',
 }) => {
   const [selected, setSelected] = useState(value || '');
 
@@ -67,7 +67,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         data-testid="dropdown"
       >
         <DropdownOption value="">{placeholder}</DropdownOption>
-        {options.map(option => (
+        {options.map((option) => (
           <DropdownOption key={option.value} value={option.value}>
             {option.label}
           </DropdownOption>

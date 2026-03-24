@@ -126,13 +126,13 @@ jobs:
 
           if [ "${{ needs.code-quality.result }}" == "failure" ]; then
 
-            echo "❌ Build failed! Code quality checks did not pass."
+            echo "Build failed! Code quality checks did not pass."
 
             exit 1
 
           else
 
-            echo "✅ Build successful! All code quality checks passed."
+            echo "Build successful! All code quality checks passed."
 
           fi
  

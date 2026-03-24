@@ -12,7 +12,13 @@ export type { TextProps } from './Text';
 
 // Table
 export { Table, TableHeader, TableBody, TableRow, TableCell, TableFooter } from './Table';
-export type { TableProps, TableHeaderProps, TableRowProps, TableCellProps, TableFooterProps } from './Table';
+export type {
+  TableProps,
+  TableHeaderProps,
+  TableRowProps,
+  TableCellProps,
+  TableFooterProps,
+} from './Table';
 
 // Dropdown
 export { Dropdown } from './Dropdown';

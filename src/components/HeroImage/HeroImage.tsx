@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 import { HeroImageProps } from './HeroImage.types';
 
-const HeroContainer = styled.div<{ 
+const HeroContainer = styled.div<{
   height?: string;
   disabled?: boolean;
 }>`
   position: relative;
   width: 100%;
-  height: ${props => props.height || '400px'};
+  height: ${(props) => props.height || '400px'};
   overflow: hidden;
   border-radius: 8px;
-  opacity: ${props => (props.disabled ? 0.6 : 1)};
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'auto')};
+  opacity: ${(props) => (props.disabled ? 0.6 : 1)};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'auto')};
   transition: all 0.3s ease;
 
   @media (max-width: 768px) {
-    height: ${props => {
+    height: ${(props) => {
       const heightValue = props.height || '400px';
       const numHeight = parseFloat(heightValue);
-      return (numHeight * 0.7) + 'px';
+      return numHeight * 0.7 + 'px';
     }};
   }
 `;
@@ -36,7 +36,7 @@ const HeroOverlay = styled.div<{ overlayColor?: string }>`
   left: 0;
   width: 100%;
   height: 100%;
-  background: ${props => props.overlayColor || 'rgba(0, 0, 0, 0.4)'};
+  background: ${(props) => props.overlayColor || 'rgba(0, 0, 0, 0.4)'};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,15 +69,15 @@ const HeroSubtitle = styled.p`
   }
 `;
 
-export const HeroImage: React.FC<HeroImageProps> = ({ 
-  src, 
+export const HeroImage: React.FC<HeroImageProps> = ({
+  src,
   alt,
   height = '400px',
   overlay = true,
   overlayColor,
   disabled = false,
   title,
-  subtitle
+  subtitle,
 }) => (
   <HeroContainer height={height} disabled={disabled} data-testid="hero-image">
     <HeroImg src={src} alt={alt} data-testid="hero-image-img" />

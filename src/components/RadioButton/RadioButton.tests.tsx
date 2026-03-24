@@ -36,20 +36,22 @@ describe('RadioButton Component', () => {
   test('handles change event', () => {
     const handleChange = jest.fn();
     render(<RadioButton name="test" value="test1" label="Test" onChange={handleChange} />);
-    
+
     const input = screen.getByTestId('radio-button-input');
     fireEvent.change(input);
-    
+
     expect(handleChange).toHaveBeenCalledWith('test1');
   });
 
   test('does not trigger change when disabled', () => {
     const handleChange = jest.fn();
-    render(<RadioButton name="test" value="test1" label="Test" disabled={true} onChange={handleChange} />);
-    
+    render(
+      <RadioButton name="test" value="test1" label="Test" disabled={true} onChange={handleChange} />
+    );
+
     const input = screen.getByTestId('radio-button-input') as HTMLInputElement;
     fireEvent.change(input);
-    
+
     // The change event might still fire, but the callback should not be called due to the disabled check
   });
 });

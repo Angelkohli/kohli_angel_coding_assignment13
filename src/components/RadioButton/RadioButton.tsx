@@ -4,8 +4,8 @@ import { RadioButtonProps } from './RadioButton.types';
 const RadioButtonContainer = styled.label<{ disabled?: boolean }>`
   display: flex;
   align-items: center;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${props => (props.disabled ? 0.6 : 1)};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${(props) => (props.disabled ? 0.6 : 1)};
   margin: 8px 0;
   user-select: none;
   transition: all 0.3s ease;
@@ -18,14 +18,14 @@ const HiddenInput = styled.input`
 const RadioCircle = styled.div<{ disabled?: boolean; checked?: boolean }>`
   width: 20px;
   height: 20px;
-  border: 2px solid ${props => (props.disabled ? '#cccccc' : '#007bff')};
+  border: 2px solid ${(props) => (props.disabled ? '#cccccc' : '#007bff')};
   border-radius: 50%;
   margin-right: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  background-color: ${props => (props.checked && !props.disabled ? '#007bff' : 'white')};
+  background-color: ${(props) => (props.checked && !props.disabled ? '#007bff' : 'white')};
 
   &::after {
     content: '';
@@ -33,7 +33,7 @@ const RadioCircle = styled.div<{ disabled?: boolean; checked?: boolean }>`
     height: 8px;
     background-color: white;
     border-radius: 50%;
-    opacity: ${props => (props.checked ? 1 : 0)};
+    opacity: ${(props) => (props.checked ? 1 : 0)};
     transition: opacity 0.3s ease;
   }
 
@@ -45,7 +45,7 @@ const RadioCircle = styled.div<{ disabled?: boolean; checked?: boolean }>`
 `;
 
 const RadioLabel = styled.span<{ disabled?: boolean }>`
-  color: ${props => (props.disabled ? '#cccccc' : '#333333')};
+  color: ${(props) => (props.disabled ? '#cccccc' : '#333333')};
   font-size: 1rem;
   font-weight: 500;
 
@@ -54,13 +54,13 @@ const RadioLabel = styled.span<{ disabled?: boolean }>`
   }
 `;
 
-export const RadioButton: React.FC<RadioButtonProps> = ({ 
-  name, 
-  value, 
+export const RadioButton: React.FC<RadioButtonProps> = ({
+  name,
+  value,
   label,
   checked = false,
   disabled = false,
-  onChange
+  onChange,
 }) => {
   const handleChange = () => {
     if (!disabled) {

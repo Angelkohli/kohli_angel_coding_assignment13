@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { ButtonProps } from './Button.types';
 
-const StyledButton = styled.button<{ 
-  disabled?: boolean; 
+const StyledButton = styled.button<{
+  disabled?: boolean;
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'secondary';
 }>`
-  background-color: ${props => {
+  background-color: ${(props) => {
     if (props.disabled) return '#cccccc';
     if (props.backgroundColor) return props.backgroundColor;
     return props.variant === 'secondary' ? '#6c757d' : '#007bff';
@@ -15,12 +15,12 @@ const StyledButton = styled.button<{
   color: white;
   border: none;
   border-radius: 4px;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${props => (props.disabled ? 0.6 : 1)};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${(props) => (props.disabled ? 0.6 : 1)};
   font-weight: 600;
   transition: all 0.3s ease;
-  
-  ${props => {
+
+  ${(props) => {
     switch (props.size) {
       case 'small':
         return 'padding: 6px 12px; font-size: 0.875rem;';
@@ -42,21 +42,23 @@ const StyledButton = styled.button<{
   }
 
   @media (max-width: 768px) {
-    padding: ${props => props.size === 'small' ? '5px 10px' : props.size === 'large' ? '10px 20px' : '8px 16px'};
-    font-size: ${props => props.size === 'small' ? '0.8rem' : props.size === 'large' ? '1rem' : '0.9rem'};
+    padding: ${(props) =>
+      props.size === 'small' ? '5px 10px' : props.size === 'large' ? '10px 20px' : '8px 16px'};
+    font-size: ${(props) =>
+      props.size === 'small' ? '0.8rem' : props.size === 'large' ? '1rem' : '0.9rem'};
   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({ 
-  label, 
-  disabled = false, 
-  backgroundColor, 
+export const Button: React.FC<ButtonProps> = ({
+  label,
+  disabled = false,
+  backgroundColor,
   onClick,
   size = 'medium',
-  variant = 'primary'
+  variant = 'primary',
 }) => (
-  <StyledButton 
-    disabled={disabled} 
+  <StyledButton
+    disabled={disabled}
     onClick={onClick}
     backgroundColor={backgroundColor}
     size={size}
