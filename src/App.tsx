@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 
 function App() {
-  var x = 5;
   return (
     <div className="App">
       <header className="App-header">
