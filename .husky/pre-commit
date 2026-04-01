@@ -1,17 +1,24 @@
-echo " Running pre-commit checks..."
-echo ""
+#!/bin/sh
  
-# Run lint-staged (Prettier + ESLint)
-echo " Checking Prettier and ESLint..."
-npx lint-staged
+echo "🔍 Running Prettier check..."
+npx prettier --check "src/**/*.{ts,tsx}"
+if [ $? -ne 0 ]; then
+  echo "Prettier check failed! Run: npx prettier --write 'src/**/*.{ts,tsx}'"
+  exit 1
+fi
  
-echo " Prettier/ESLint checks passed!"
-echo ""
+echo "🔍 Running ESLint check..."
+npx eslint "src/**/*.{ts,tsx}"
+if [ $? -ne 0 ]; then
+  echo "ESLint check failed! Fix the errors above."
+  exit 1
+fi
  
-# Run tests
-echo " Running tests..."
-npm run test:ci
+echo "🔍 Running Tests..."
+npx react-scripts test --watchAll=false
+if [ $? -ne 0 ]; then
+  echo "Tests failed! Fix the failing tests above."
+  exit 1
+fi
  
-echo " Tests passed!"
-echo ""
-echo " All pre-commit checks passed! Ready to commit."
+echo "All checks passed! Committing..."
