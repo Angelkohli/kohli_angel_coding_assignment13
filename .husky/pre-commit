@@ -1,20 +1,20 @@
 #!/bin/sh
  
-echo "🔍 Running Prettier check..."
+echo "Running Prettier check..."
 npx prettier --check "src/**/*.{ts,tsx}"
 if [ $? -ne 0 ]; then
   echo "Prettier check failed! Run: npx prettier --write 'src/**/*.{ts,tsx}'"
   exit 1
 fi
  
-echo "🔍 Running ESLint check..."
+echo "Running ESLint check..."
 npx eslint "src/**/*.{ts,tsx}"
 if [ $? -ne 0 ]; then
   echo "ESLint check failed! Fix the errors above."
   exit 1
 fi
  
-echo "🔍 Running Tests..."
+echo "Running Tests..."
 npx react-scripts test --watchAll=false
 if [ $? -ne 0 ]; then
   echo "Tests failed! Fix the failing tests above."
